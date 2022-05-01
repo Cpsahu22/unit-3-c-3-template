@@ -4,21 +4,33 @@
 
 
 
-var amount1 = localStorage.getItem("amount")||0;
+var x=localStorage.getItem("amount")
+ wallet1=document.querySelector("#money")
+wallet1.innerText=x;
 
-document.querySelector("#wallet").innerText=amount1;
-
-const getmovie = JSON.parse(localStorage.getItem('movie')) || [];
-console.log(getmovie);
-
-const box=document.createElement("div");
-
-const get=document.createElement("h2");
-get.innerText=getmovie.title;
-
-const img= document.createElement('img');
-img.src=Poster;
-box.append(get,img);
-document.querySelector('#movie').append(box);
-
+var mobie=JSON.parse(localStorage.getItem("movie"))
+var div1=document.querySelector("#movie")
+let p=document.createElement("p")
+p.setAttribute("id","p2")
+p.innerText=mobie.Title;
+let img=document.createElement("img")
+img.src=mobie.Poster;
+img.setAttribute("id","image2")
+let div=document.createElement("div")
+div.append(p,img)
+div1.append(div)
+function pay()
+{
+    var count=document.querySelector("#number_of_seats").value
+    if(count*100>x)
+    {
+        alert('insufficient fund')
+    }
+    else{
+    var y=x-count*100;
+   localStorage.setItem("amount",y);
+   alert("Booking Sucessful")
+   location.reload();
+    }
+}
 
